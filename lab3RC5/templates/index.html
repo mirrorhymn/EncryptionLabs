@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>RC5 Cipher</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>RC5 (32/12/16)</h1>
+
+    <form method="post">
+        <textarea name="text" placeholder="Текст" required>{{ request.form.text }}</textarea>
+
+        <input type="text" id="key" name="key" placeholder="Ключ (16 байт)" value="{{ request.form.key }}" required>
+
+        <div class="buttons">
+            <button name="action" value="encrypt">Зашифровать</button>
+            <button name="action" value="decrypt">Дешифровать</button>
+            <button type="button" onclick="generateKey()">Сгенерировать ключ</button>
+        </div>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <h3>Результат:</h3>
+            <textarea readonly>{{ result }}</textarea>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+function generateKey() {
+    const array = new Uint8Array(16);
+    window.crypto.getRandomValues(array);
+    let hexKey = Array.from(array).map(b => b.toString(16).padStart(2,'0')).join('');
+    document.getElementById('key').value = hexKey;
+}
+</script>
+</body>
+</html>

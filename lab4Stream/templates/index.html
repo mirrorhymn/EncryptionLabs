@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Поточный XOR-шифр</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Поточный XOR-шифр</h1>
+        <form method="POST">
+            <label for="key">Ключ:</label>
+            <input type="text" id="key" name="key" placeholder="Введите ключ" required value="{{ key }}">
+
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" placeholder="Введите сообщение" rows="5" required>{{ message }}</textarea>
+
+            <div class="buttons">
+                <button type="submit" name="action" value="encrypt">Зашифровать</button>
+                <button type="submit" name="action" value="decrypt">Расшифровать</button>
+            </div>
+        </form>
+
+        {% if output %}
+        <label>Результат:</label>
+        <textarea readonly rows="5">{{ output }}</textarea>
+        {% endif %}
+    </div>
+</body>
+</html>

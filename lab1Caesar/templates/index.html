@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Шифр Цезаря(Рус/Eng)</h1>
+
+    <form method="post">
+
+        <textarea name="text" placeholder="Введите текст">{{ text }}</textarea>
+
+        <input type="hidden" name="result" value="{{ result }}">
+
+        <div class="controls">
+            <input type="number" name="shift" value="{{ shift }}">
+        </div>
+
+        <div class="buttons">
+            <button class="encrypt" type="submit" name="action" value="encrypt">
+                🔐 Зашифровать
+            </button>
+
+            <button class="decrypt" type="submit" name="action" value="decrypt">
+                🔓 Дешифровать
+            </button>
+        </div>
+
+    </form>
+
+    <div class="output">
+        <h3>Результат</h3>
+        <div class="result">{{ result }}</div>
+    </div>
+</div>
+
+</body>
+</html>

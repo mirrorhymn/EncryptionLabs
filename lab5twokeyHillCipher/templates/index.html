@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Двухключевой шифр Хилла</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Двухключевой шифр Хилла (2x2)</h1>
+        <form method="POST">
+            <textarea name="text" placeholder="Введите текст" required>{{ request.form.text }}</textarea>
+            <div class="keys">
+                <input type="number" name="a" placeholder="a" required value="{{ request.form.a }}">
+                <input type="number" name="b" placeholder="b" required value="{{ request.form.b }}">
+                <input type="number" name="c" placeholder="c" required value="{{ request.form.c }}">
+                <input type="number" name="d" placeholder="d" required value="{{ request.form.d }}">
+            </div>
+            <button name="action" value="encrypt">Зашифровать</button>
+            <button name="action" value="decrypt">Дешифровать</button>
+        </form>
+        <h2>Результат:</h2>
+        <p>{{ result }}</p>
+    </div>
+</body>
+</html>

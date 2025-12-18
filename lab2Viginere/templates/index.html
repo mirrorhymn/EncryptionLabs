@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Квадрат Виженера</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Квадрат Виженера (RU)</h1>
+
+    <form method="post">
+        <label>Ключевое слово</label>
+        <input type="text" name="key" value="{{ key }}" required>
+
+        <label>Введите сообщение</label>
+        <textarea name="text" rows="6">{{ input_text }}</textarea>
+
+        <div class="buttons">
+            <button name="action" value="encrypt">Зашифровать</button>
+            <button name="action" value="decrypt">Расшифровать</button>
+        </div>
+
+        {% if output_text %}
+            <h2>{{ mode }}</h2>
+            <textarea readonly rows="6">{{ output_text }}</textarea>
+        {% endif %}
+    </form>
+</div>
+
+</body>
+</html>
